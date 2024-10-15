@@ -1,0 +1,23 @@
+# <% require "dotenv"; Dotenv.load(".env") %>
+
+service: my-pghero
+image: gambala/my-pghero
+servers:
+  - <%= ENV["MAIN_SERVER_IP"] %>
+proxy:
+  ssl: false
+  host: pghero.gambala.pro
+  app_port: 8080
+  healthcheck:
+    interval: 10
+    path: /health
+registry:
+  server: ghcr.io
+  username: gambala
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+builder:
+  arch: arm64
+env:
+  secret:
+    - DATABASE_URL
