@@ -1,4 +1,4 @@
-# <% require "dotenv"; Dotenv.load(".env") %>
+<% require "dotenv"; Dotenv.load(".env") %>
 
 service: my-pghero
 image: gambala/my-pghero
@@ -21,3 +21,5 @@ builder:
 env:
   secret:
     - DATABASE_URL
+    - PGHERO_USERNAME
+    - PGHERO_PASSWORD
